@@ -88,6 +88,7 @@ tmdb-data-pipeline/
 └── README.md
 
 ---
+
 ### Environment Configuration
 
 A root-level .env file is used for all sensitive configuration. This file is ignored by Git.
