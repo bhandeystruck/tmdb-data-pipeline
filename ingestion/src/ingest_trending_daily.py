@@ -1,5 +1,7 @@
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
+import argparse
+
 
 from .logger import get_logger
 from .config import validate_env
@@ -8,12 +10,27 @@ from .minio_writer import put_json
 
 logger = get_logger("ingest_trending_daily")
 
+def get_args():
+    """
+    Parse command-line arguments for the ingestion script.
+    """
+    parser = argparse.ArgumentParser(
+        description="Ingest TMDB trending daily data into MinIO Bronze."
+    )
+    parser.add_argument(
+        "--dt",
+        required=False,
+        help="Partition date to write in YYYY-MM-DD format",
+    )
+    return parser.parse_args()
+
 
 def main():
     validate_env()
 
     run_id = str(uuid.uuid4())
-    dt = datetime.now(timezone.utc).date().isoformat()
+    args = get_args()
+    dt = args.dt or str(date.today())
 
     logger.info("Fetching TMDB trending (all/day) ...")
     payload = tmdb_get("/trending/all/day", params={})
