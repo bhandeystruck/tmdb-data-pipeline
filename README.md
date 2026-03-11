@@ -86,7 +86,7 @@ tmdb-data-pipeline/
 ├── .env
 ├── .gitignore
 └── README.md
-
+```
 ---
 
 ### Environment Configuration
