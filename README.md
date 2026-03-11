@@ -92,29 +92,6 @@ tmdb-data-pipeline/
 ### Environment Configuration
 
 A root-level .env file is used for all sensitive configuration. This file is ignored by Git.
-
-TMDB settings
-TMDB_BASE_URL
-TMDB_READ_ACCESS_TOKEN
-TMDB_LANGUAGE
-TMDB_REGION
-
-MinIO settings
-MINIO_ENDPOINT
-MINIO_ACCESS_KEY
-MINIO_SECRET_KEY
-MINIO_BRONZE_BUCKET
-MINIO_REGION
-
-Snowflake settings
-SNOWFLAKE_ACCOUNT
-SNOWFLAKE_USER
-SNOWFLAKE_PASSWORD
-SNOWFLAKE_WAREHOUSE
-SNOWFLAKE_DATABASE
-SNOWFLAKE_SCHEMA
-SNOWFLAKE_ROLE
-
 The current config.py validates required environment variables before running ingestion or loading logic.
 
 ---
