@@ -7,19 +7,11 @@ Purpose:
 - Insert one raw row into Snowflake Bronze
 """
 
-import hashlib
 import json
 
 from ingestion.src.minio_reader import get_json
 from ingestion.src.snowflake_client import get_connection
-
-
-def compute_payload_hash(payload: dict) -> str:
-    """
-    Create a stable hash of the JSON payload for dedup/debugging.
-    """
-    raw = json.dumps(payload, sort_keys=True).encode("utf-8")
-    return hashlib.sha256(raw).hexdigest()
+from .utils import compute_payload_hash
 
 
 def parse_key_metadata(key: str) -> dict:

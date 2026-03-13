@@ -8,45 +8,17 @@ Purpose:
 - Insert one row per object into Snowflake Bronze
 """
 
-import hashlib
+
 import json
 import argparse
-from datetime import date
 from ingestion.src.logger import get_logger
 
 from ingestion.src.minio_reader import get_json, list_objects
 from ingestion.src.snowflake_client import get_connection
 
+from .utils import parse_key_metadata, resolve_dt, compute_payload_hash
+
 logger = get_logger(__name__)
-
-def compute_payload_hash(payload: dict) -> str:
-    """
-    Create a stable hash of the JSON payload for dedup/debugging.
-    """
-    raw = json.dumps(payload, sort_keys=True).encode("utf-8")
-    return hashlib.sha256(raw).hexdigest()
-
-
-def parse_key_metadata(key: str) -> dict:
-    """
-    Parse metadata from a key like:
-    endpoint=trending/time_window=day/dt=2026-03-10/run_id=<uuid>.json
-    """
-    parts = key.split("/")
-    meta = {}
-
-    for part in parts:
-        if "=" in part:
-            k, v = part.split("=", 1)
-            meta[k] = v
-
-    return {
-        "endpoint": meta["endpoint"],
-        "time_window": meta["time_window"],
-        "dt": meta["dt"],
-        "run_id": meta["run_id"].replace(".json", ""),
-    }
-
 
 def already_loaded(cur, object_key: str) -> bool:
     """
@@ -182,7 +154,7 @@ def get_args():
 
 def main():
     args = get_args()
-    dt = args.dt or str(date.today())
+    dt = resolve_dt(args.dt)
 
     prefix = f"endpoint=trending/time_window=day/dt={dt}/"
     objects = list_objects(prefix)

@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, timezone, date
+from datetime import date
 import argparse
 
 
@@ -7,6 +7,7 @@ from .logger import get_logger
 from .config import validate_env
 from .tmdb_client import tmdb_get
 from .minio_writer import put_json
+from .utils import resolve_dt
 
 logger = get_logger("ingest_trending_daily")
 
@@ -24,13 +25,12 @@ def get_args():
     )
     return parser.parse_args()
 
-
 def main():
     validate_env()
 
     run_id = str(uuid.uuid4())
     args = get_args()
-    dt = args.dt or str(date.today())
+    dt = resolve_dt(args.dt)
 
     logger.info("Fetching TMDB trending (all/day) ...")
     payload = tmdb_get("/trending/all/day", params={})
