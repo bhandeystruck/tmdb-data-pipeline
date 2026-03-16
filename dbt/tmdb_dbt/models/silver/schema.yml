@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_tmdb_trending_daily
+    description: Flattened TMDB trending daily items derived from raw Bronze payloads.
+    columns:
+      - name: dt
+        description: Partition date associated with the raw ingestion run.
+        tests:
+          - not_null
+
+      - name: run_id
+        description: Unique ingestion run identifier from the raw object key.
+        tests:
+          - not_null
+
+      - name: object_key
+        description: MinIO object key for the raw payload loaded into Bronze.
+        tests:
+          - not_null
+
+      - name: raw_loaded_at
+        description: Timestamp when the raw Bronze row was loaded into Snowflake.
+        tests:
+          - not_null
+
+      - name: tmdb_id
+        description: TMDB identifier for the trending item.
+        tests:
+          - not_null
+
+      - name: media_type
+        description: TMDB media type for the item, such as movie, tv, or person.
+
+      - name: display_title
+        description: Coalesced display title using title or name.
+
+      - name: original_display_title
+        description: Coalesced original title using original_title or original_name.
+
+      - name: popularity
+        description: Popularity score returned by TMDB.
+
+      - name: vote_average
+        description: Average user rating returned by TMDB.
+
+      - name: vote_count
+        description: Number of votes returned by TMDB.
+
+      - name: release_date
+        description: Release date for movie items when available.
+
+      - name: first_air_date
+        description: First air date for TV items when available.
+
+      - name: raw_item_payload
+        description: Raw flattened TMDB item payload preserved for traceability.

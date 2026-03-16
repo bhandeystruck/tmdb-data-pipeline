@@ -1,0 +1,72 @@
+[0m15:31:31.198259 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001591DF452B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001591F2BBED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001591F2BBB10>]}
+
+
+============================== 15:31:31.201735 | 73eb3266-3de7-48f5-b26f-bbca6af34398 ==============================
+[0m15:31:31.201735 [info ] [MainThread]: Running with dbt=1.11.6
+[0m15:31:31.202100 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\adixb\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt init tmdb_dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m15:31:31.223331 [debug] [MainThread]: Starter project path: C:\Users\adixb\AppData\Local\Programs\Python\Python313\Lib\site-packages\dbt\include\starter_project
+[0m15:31:31.240448 [info ] [MainThread]: 
+Your new dbt project "tmdb_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:31:31.240841 [info ] [MainThread]: Setting up your profile.
+[0m15:39:25.072123 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:39:25.072441 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:39:25.072604 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:42:11.558417 [info ] [MainThread]: Profile tmdb_dbt written to C:\Users\adixb\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m15:42:11.559466 [debug] [MainThread]: Command `dbt init` succeeded at 15:42:11.559379 after 640.44 seconds
+[0m15:42:11.559701 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015951636C40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001594FD628D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001591F33F9B0>]}
+[0m15:42:11.559935 [debug] [MainThread]: Flushing usage events
+[0m15:42:13.074765 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:42:21.032575 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A75D52B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A893FED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A893FB10>]}
+
+
+============================== 15:42:21.035708 | f1b563c1-4b8c-4f41-aa6c-75f4f668b09d ==============================
+[0m15:42:21.035708 [info ] [MainThread]: Running with dbt=1.11.6
+[0m15:42:21.036083 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\adixb\\.dbt', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m15:42:21.049485 [info ] [MainThread]: dbt version: 1.11.6
+[0m15:42:21.049734 [info ] [MainThread]: python version: 3.13.3
+[0m15:42:21.049917 [info ] [MainThread]: python path: C:\Users\adixb\AppData\Local\Programs\Python\Python313\python.exe
+[0m15:42:21.050086 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m15:42:21.052955 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'SNOWFLAKE_ACCOUNT'
+[0m15:42:21.053563 [debug] [MainThread]: Command `dbt debug` failed at 15:42:21.053493 after 0.10 seconds
+[0m15:42:21.053770 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A99FC050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A99A32F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000286A9992470>]}
+[0m15:42:21.053984 [debug] [MainThread]: Flushing usage events
+[0m15:42:22.530110 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:48:13.408635 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002537F9252B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025300CE3ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025300CE3B10>]}
+
+
+============================== 15:48:13.411942 | 8497297b-93c2-4446-82e1-d2d8d11ebc31 ==============================
+[0m15:48:13.411942 [info ] [MainThread]: Running with dbt=1.11.6
+[0m15:48:13.412369 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\adixb\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m15:48:13.425255 [info ] [MainThread]: dbt version: 1.11.6
+[0m15:48:13.425555 [info ] [MainThread]: python version: 3.13.3
+[0m15:48:13.425738 [info ] [MainThread]: python path: C:\Users\adixb\AppData\Local\Programs\Python\Python313\python.exe
+[0m15:48:13.425910 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m15:48:13.944589 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:48:13.944875 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:48:13.945036 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:48:13.980892 [info ] [MainThread]: Using profiles dir at C:\Users\adixb\.dbt
+[0m15:48:13.981194 [info ] [MainThread]: Using profiles.yml file at C:\Users\adixb\.dbt\profiles.yml
+[0m15:48:13.981397 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\adixb\Desktop\tmdb-data-pipeline\dbt\dbt_project.yml
+[0m15:48:13.981620 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m15:48:13.982273 [debug] [MainThread]: Command `dbt debug` failed at 15:48:13.982206 after 0.65 seconds
+[0m15:48:13.982511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025333230C30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025333248A70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002533315A580>]}
+[0m15:48:13.982737 [debug] [MainThread]: Flushing usage events
+[0m15:48:15.502466 [debug] [MainThread]: An error was encountered while trying to flush usage events

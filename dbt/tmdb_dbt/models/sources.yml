@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: TMDB_DB
+    schema: BRONZE
+    tables:
+      - name: tmdb_trending_daily_raw
+        description: Raw TMDB trending daily payloads loaded from MinIO into Snowflake Bronze.
