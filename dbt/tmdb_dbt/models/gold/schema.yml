@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: fct_tmdb_trending_daily_summary
+    description: Daily TMDB trending summary aggregated by partition date and media type.
+    columns:
+      - name: dt
+        description: Partition date for the trending dataset.
+        tests:
+          - not_null
+
+      - name: media_type
+        description: TMDB media type such as movie, tv, or person.
+        tests:
+          - not_null
+
+      - name: item_count
+        description: Total number of rows in the Silver model for the given date and media type.
+        tests:
+          - not_null
+
+      - name: distinct_item_count
+        description: Count of distinct TMDB item IDs for the given date and media type.
+        tests:
+          - not_null
+
+      - name: avg_popularity
+        description: Average popularity score across items for the given date and media type.
+
+      - name: avg_vote_average
+        description: Average vote score across items for the given date and media type.
+
+      - name: total_vote_count
+        description: Total vote count across items for the given date and media type.
+
+      - name: max_popularity
+        description: Maximum popularity score observed for the given date and media type.
+        
+  - name: dim_tmdb_trending_latest
+    description: Latest available trending record for each TMDB item and media type.
+    columns:
+      - name: tmdb_id
+        description: TMDB identifier for the item.
+        tests:
+          - not_null
+
+      - name: media_type
+        description: TMDB media type such as movie, tv, or person.
+        tests:
+          - not_null
+
+      - name: dt
+        description: Most recent partition date retained for the item.
+        tests:
+          - not_null
+
+      - name: display_title
+        description: Best available display title using title or name.
+
+      - name: popularity
+        description: Latest popularity score returned by TMDB.
+
+      - name: vote_average
+        description: Latest average vote score returned by TMDB.
+
+      - name: vote_count
+        description: Latest vote count returned by TMDB.
+
+      - name: raw_loaded_at
+        description: Timestamp when the retained raw Bronze row was loaded into Snowflake.
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - tmdb_id
+              - media_type
