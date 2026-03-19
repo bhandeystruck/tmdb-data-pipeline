@@ -77,3 +77,48 @@ models:
             combination_of_columns:
               - tmdb_id
               - media_type
+              
+  - name: fct_tmdb_trending_top_items_daily
+    description: Top 10 TMDB trending items per day and media type ranked by popularity.
+    columns:
+      - name: dt
+        description: Partition date for the trending dataset.
+        tests:
+          - not_null
+
+      - name: media_type
+        description: TMDB media type such as movie, tv, or person.
+        tests:
+          - not_null
+
+      - name: tmdb_id
+        description: TMDB identifier for the trending item.
+        tests:
+          - not_null
+
+      - name: display_title
+        description: Best available title for display using title or name.
+
+      - name: popularity
+        description: Popularity score returned by TMDB.
+        tests:
+          - not_null
+
+      - name: vote_average
+        description: Average vote score returned by TMDB.
+
+      - name: vote_count
+        description: Number of votes returned by TMDB.
+
+      - name: popularity_rank
+        description: Rank of the item within its date and media type partition, ordered by popularity.
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - dt
+              - media_type
+              - popularity_rank

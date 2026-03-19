@@ -7,3 +7,49 @@ sources:
     tables:
       - name: tmdb_trending_daily_raw
         description: Raw TMDB trending daily payloads loaded from MinIO into Snowflake Bronze.
+        columns:
+          - name: source_system
+            description: Upstream source system for the raw payload.
+            tests:
+              - not_null
+
+          - name: endpoint
+            description: API endpoint name captured in the object key.
+            tests:
+              - not_null
+
+          - name: time_window
+            description: TMDB trending time window, such as day.
+            tests:
+              - not_null
+
+          - name: object_key
+            description: Exact MinIO object key for the raw JSON file.
+            tests:
+              - not_null
+              - unique
+
+          - name: dt
+            description: Partition date associated with the raw file.
+            tests:
+              - not_null
+
+          - name: run_id
+            description: Unique ingestion run identifier parsed from the object key.
+            tests:
+              - not_null
+
+          - name: payload
+            description: Raw TMDB JSON payload stored as VARIANT.
+            tests:
+              - not_null
+
+          - name: loaded_at
+            description: Timestamp when the raw row was loaded into Snowflake.
+            tests:
+              - not_null
+
+          - name: payload_hash
+            description: Hash of the raw payload content for validation and deduplication support.
+            tests:
+              - not_null
