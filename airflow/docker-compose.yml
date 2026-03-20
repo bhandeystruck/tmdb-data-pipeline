@@ -1,5 +1,4 @@
-x-airflow-common:
-  &airflow-common
+x-airflow-common: &airflow-common
   build:
     context: ..
     dockerfile: airflow/Dockerfile
@@ -8,11 +7,36 @@ x-airflow-common:
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
-    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+    AIRFLOW__API__EXPOSE_CONFIG: "true"
     AIRFLOW_UID: "50000"
+
     AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_USERS: "admin:admin"
     AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_PASSWORDS_FILE: "/opt/airflow/simple_auth_manager_passwords.json.generated"
-    MINIO_ENDPOINT: "http://host.docker.internal:9000"  
+
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: "http://airflow-api-server:8080/execution/"
+
+    AIRFLOW__API_AUTH__JWT_SECRET: "${AIRFLOW__API_AUTH__JWT_SECRET}"
+    AIRFLOW__API__SECRET_KEY: "${AIRFLOW__API__SECRET_KEY}"
+    AIRFLOW__WEBSERVER__SECRET_KEY: "${AIRFLOW__WEBSERVER__SECRET_KEY}"
+
+    TMDB_BASE_URL: "https://api.themoviedb.org/3"
+    TMDB_READ_ACCESS_TOKEN: "${TMDB_READ_ACCESS_TOKEN}"
+    TMDB_LANGUAGE: "en-US"
+    TMDB_REGION: "US"
+
+    MINIO_ENDPOINT: "http://host.docker.internal:9000"
+    MINIO_ACCESS_KEY: "${MINIO_ACCESS_KEY}"
+    MINIO_SECRET_KEY: "${MINIO_SECRET_KEY}"
+    MINIO_BRONZE_BUCKET: "tmdb-bronze"
+    MINIO_REGION: "us-east-1"
+
+    SNOWFLAKE_ACCOUNT: "${SNOWFLAKE_ACCOUNT}"
+    SNOWFLAKE_USER: "${SNOWFLAKE_USER}"
+    SNOWFLAKE_PASSWORD: "${SNOWFLAKE_PASSWORD}"
+    SNOWFLAKE_WAREHOUSE: "TMDB_WH"
+    SNOWFLAKE_DATABASE: "TMDB_DB"
+    SNOWFLAKE_SCHEMA: "BRONZE"
+    SNOWFLAKE_ROLE: "TMDB_PIPELINE_ROLE"
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs

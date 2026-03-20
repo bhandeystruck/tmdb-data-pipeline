@@ -70,3 +70,18 @@ Internal Error
 [0m15:48:13.982511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025333230C30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025333248A70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002533315A580>]}
 [0m15:48:13.982737 [debug] [MainThread]: Flushing usage events
 [0m15:48:15.502466 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:13:49.679714 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C727152B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C73A97ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C73A97B10>]}
+
+
+============================== 15:13:49.683795 | 85f616bd-3a99-4da8-90c0-3a4fb4c5ca78 ==============================
+[0m15:13:49.683795 [info ] [MainThread]: Running with dbt=1.11.6
+[0m15:13:49.684178 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\adixb\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select fct_tmdb_trending_top_items_daily', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m15:13:49.684627 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\adixb\Desktop\tmdb-data-pipeline\dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:13:49.685312 [debug] [MainThread]: Command `dbt run` failed at 15:13:49.685238 after 0.08 seconds
+[0m15:13:49.685512 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C73A86650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C7397E8D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022C738E7680>]}
+[0m15:13:49.685701 [debug] [MainThread]: Flushing usage events
+[0m15:13:51.183363 [debug] [MainThread]: An error was encountered while trying to flush usage events
